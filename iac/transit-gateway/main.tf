@@ -44,7 +44,7 @@ locals {
 ####################################################################################################
 
 module "transit_gateway" {
-  source = "git::https://github.com/defenseunicorns/terraform-aws-transit-gateway.git?ref=v0.0.3"
+  source = "git::https://github.com/defenseunicorns/terraform-aws-transit-gateway.git?ref=v0.0.4"
 
   create_transit_gateway                         = true
   create_transit_gateway_route_table             = false
@@ -93,7 +93,7 @@ locals {
 # dat
 
 module "transit_gateway_attachment" {
-  source = "git::https://github.com/defenseunicorns/terraform-aws-transit-gateway.git?ref=v0.0.3"
+  source = "git::https://github.com/defenseunicorns/terraform-aws-transit-gateway.git?ref=v0.0.4"
 
   create_transit_gateway                         = false
   use_existing_transit_gateway                   = true

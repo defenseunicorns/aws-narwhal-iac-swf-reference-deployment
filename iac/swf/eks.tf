@@ -370,7 +370,7 @@ locals {
 }
 
 module "eks" {
-  source = "git::https://github.com/defenseunicorns/terraform-aws-eks.git?ref=v0.0.22"
+  source = "git::https://github.com/defenseunicorns/terraform-aws-eks.git?ref=v0.0.26"
 
   name                                    = local.cluster_name
   aws_region                              = var.region
@@ -556,7 +556,7 @@ module "self_managed_node_group_keypair" {
 }
 
 module "self_managed_node_group_secret_key_secrets_manager_secret" {
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-secrets-manager.git?ref=v1.1.2"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-secrets-manager.git?ref=v1.3.1"
 
   name                    = module.self_managed_node_group_keypair.key_pair_name
   description             = "Secret key for the uds-swf self managed node group keypair"
