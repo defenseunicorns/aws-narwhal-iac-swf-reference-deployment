@@ -7,7 +7,7 @@ locals {
 module "gitlab_s3_bucket" {
   for_each = toset(var.gitlab_bucket_names)
 
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-s3-bucket.git?ref=v4.1.2"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-s3-bucket.git?ref=v4.6.0"
 
   bucket        = join("-", compact([local.prefix, each.key, local.suffix]))
   tags          = local.tags
@@ -52,7 +52,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "gitlab_s3_bucket" {
 }
 
 module "gitlab_kms_key" {
-  source = "github.com/defenseunicorns/terraform-aws-uds-kms?ref=v0.0.3"
+  source = "github.com/defenseunicorns/terraform-aws-uds-kms?ref=v0.0.6"
 
   kms_key_alias_name_prefix = local.gitlab_kms_key_alias_name_prefix
   kms_key_deletion_window   = 7
@@ -262,7 +262,7 @@ resource "aws_secretsmanager_secret" "gitlab_db_secret" {
 
 module "gitlab_db" {
   source  = "terraform-aws-modules/rds/aws"
-  version = "6.7.0"
+  version = "6.10.0"
   tags    = local.tags
 
   identifier                     = var.gitlab_db_idenitfier_prefix

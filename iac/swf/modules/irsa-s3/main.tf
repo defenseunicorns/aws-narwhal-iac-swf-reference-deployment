@@ -68,7 +68,7 @@ resource "aws_iam_policy" "s3_bucket_policy" {
 module "irsa_role" {
   for_each = toset(var.serviceaccount_names)
 
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-role-for-service-accounts-eks?ref=v5.39.1"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-role-for-service-accounts-eks?ref=v5.52.2"
 
   role_name = join("-", compact([var.prefix, each.value, "s3-role", var.suffix]))
 

@@ -4,7 +4,7 @@ locals {
 }
 
 module "keycloak_kms_key" {
-  source = "github.com/defenseunicorns/terraform-aws-uds-kms?ref=v0.0.3"
+  source = "github.com/defenseunicorns/terraform-aws-uds-kms?ref=v0.0.6"
 
   kms_key_alias_name_prefix = local.keycloak_kms_key_alias_name_prefix
   kms_key_deletion_window   = 7
@@ -27,7 +27,7 @@ resource "aws_secretsmanager_secret" "keycloak_db_secret" {
 
 module "keycloak_db" {
   source  = "terraform-aws-modules/rds/aws"
-  version = "6.7.0"
+  version = "6.10.0"
   tags    = local.tags
 
   identifier                     = var.keycloak_db_idenitfier_prefix

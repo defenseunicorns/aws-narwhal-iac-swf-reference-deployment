@@ -5,7 +5,7 @@ locals {
 }
 
 module "artifactory_kms_key" {
-  source = "github.com/defenseunicorns/terraform-aws-uds-kms?ref=v0.0.3"
+  source = "github.com/defenseunicorns/terraform-aws-uds-kms?ref=v0.0.6"
 
   kms_key_alias_name_prefix = local.artifactory_kms_key_alias_name_prefix
   kms_key_deletion_window   = 7
@@ -15,7 +15,7 @@ module "artifactory_kms_key" {
 module "artifactory_s3_bucket" {
   for_each = toset(var.artifactory_bucket_names)
 
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-s3-bucket.git?ref=v4.1.2"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-s3-bucket.git?ref=v4.6.0"
 
   bucket        = join("-", compact([local.prefix, each.key, local.suffix]))
   force_destroy = var.artifactory_s3_bucket_force_destroy
@@ -129,7 +129,7 @@ resource "aws_secretsmanager_secret" "artifactory_db_secret" {
 
 module "artifactory_db" {
   source  = "terraform-aws-modules/rds/aws"
-  version = "6.7.0"
+  version = "6.10.0"
   tags    = local.tags
 
   identifier                     = var.artifactory_db_idenitfier_prefix
